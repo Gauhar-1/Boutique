@@ -6,24 +6,6 @@ import MosaicCategoryTransition from "@/components/MosaicCategoryTransition";
 import Footer from "@/components/Footer";
 
 export default async function Home() {
-  let message = "Loading...";
-
-  try {
-    const res = await fetch('http://127.0.0.1:5001/api/health', {
-      cache: 'no-store'
-    });
-
-    if (!res.ok) {
-      throw new Error(`Backend returned status: ${res.status}`);
-    }
-
-    const data = await res.json();
-    message = data.message;
-
-  } catch (error) {
-    console.error("Fetch failed:", error);
-    message = "Could not connect to the backend server. Is it running?";
-  }
 
   return (
     <main className="flex min-h-screen flex-col bg-zinc-950 text-white">
