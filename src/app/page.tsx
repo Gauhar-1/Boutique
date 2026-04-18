@@ -19,16 +19,16 @@ export default async function Home() {
         direction="right" 
         duration={12} 
         products={[
-          { id: 1, title: 'Saree 01', image: '/saree1.jpeg' },
-          { id: 2, title: 'Saree 02', image: '/saree2.jpeg' },
-          { id: 3, title: 'Saree 03', image: '/saree3.jpeg' },
-          { id: 4, title: 'Kurta 01', image: '/kurta1.jpg' },
-          { id: 5, title: 'Kurta 02', image: '/kurta2.jpg' },
-          { id: 6, title: 'Kurta 03', image: '/kurta3.jpg' },
-          { id: 7, title: 'Lehenga 01', image: '/lehenga1.jpg' },
-          { id: 8, title: 'Lehenga 02', image: '/lehenga2.jpg' },
-          { id: 9, title: 'Kurti 01', image: '/kurti1.jpg' },
-          { id: 10, title: 'Kurti 02', image: '/kurti2.jpg' },
+          { id: 1, title: 'Royal Baluchari Silk Saree', image: '/saree1.jpeg' },
+  { id: 2, title: 'Midnight Dhakai Jamdani', image: '/saree2.jpeg' },
+  { id: 3, title: 'Heritage Kantha Stitch Saree', image: '/saree3.jpeg' },
+  { id: 4, title: 'Midnight Silk Kurta', image: '/kurta1.jpg' },
+  { id: 5, title: 'Ivory Chikankari Overlay', image: '/kurta2.jpg' },
+  { id: 6, title: 'Onyx Asymmetric Drape', image: '/kurta3.jpg' },
+  { id: 7, title: 'Crimson Bridal Lehenga', image: '/lehenga1.jpg' },
+  { id: 8, title: 'Ivory Floral Organza Lehenga', image: '/lehenga2.jpg' },
+  { id: 9, title: 'Ivory Pearl Kurti', image: '/kurti1.jpg' },
+  { id: 10, title: 'Royal Navy Velvet Kurti', image: '/kurti2.jpg' },
         ]}
       />
 
@@ -39,16 +39,16 @@ export default async function Home() {
         direction="left" 
         duration={16} 
         products={[
-          { id: 11, title: 'Saree 04' , image: '/saree8.jpeg'},
-          { id: 12, title: 'Saree 05' , image: '/saree7.jpeg'},
-          { id: 13, title: 'Saree 06' , image: '/saree4.jpeg'},
-          { id: 14, title: 'Kurta 04' , image: '/kurta4.jpg'},
-          { id: 15, title: 'Kurta 05' , image: '/kurta5.jpg'},
-          { id: 16, title: 'Kurta 06' , image: '/kurta6.jpg'},
-          { id: 17, title: 'Lehenga 03' , image: '/lehenga3.jpg'},
-          { id: 18, title: 'Lehenga 04' , image: '/lehenga4.jpg'},
-          { id: 19, title: 'Kurti 03' , image: '/kurti3.jpg'},
-          { id: 20, title: 'Kurti 04' , image: '/kurti4.jpg'},
+          { id: 11, title: 'Kanjeevaram Temple Border Saree', image: '/saree8.jpeg' },
+  { id: 12, title: 'Banarasi Zari Brocade Saree', image: '/saree7.jpeg' },
+  { id: 13, title: 'Ivory Organza Couture Saree', image: '/saree4.jpeg' },
+  { id: 14, title: 'Nawab Angrakha Wrap Kurta', image: '/kurta4.jpg' },
+  { id: 15, title: 'Bengal Loom Short Kurta', image: '/kurta5.jpg' },
+  { id: 16, title: 'Mustard Linen Tunic Kurta', image: '/kurta6.jpg' },
+  { id: 17, title: 'Midnight Velvet Lehenga', image: '/lehenga3.jpg' },
+  { id: 18, title: 'Pastel Mint Net Drape Lehenga', image: '/lehenga4.jpg' },
+  { id: 19, title: 'Gold Brocade Kurti', image: '/kurti3.jpg' },
+  { id: 20, title: 'Emerald Festive Kurti', image: '/kurti4.jpg' }
         ]}
       />
 
