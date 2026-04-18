@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 
 import { useStore } from '@/context/StoreContext';
+import { Modal } from './Modal';
 
 // Tiny base64 BlurHash/LQIP placeholder
 const BLUR_PLACEHOLDER = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO88OjxfwAJ4wPNyY9m4wAAAABJRU5ErkJggg==";
@@ -89,81 +90,7 @@ export default function ProductBook({ product, index }: { product: any, index: n
       {mounted && createPortal(
         <AnimatePresence>
           {isOpen && (
-            <div className="fixed inset-0 z-[999] flex items-end md:items-center justify-center p-0 md:p-6 lg:p-12">
-              
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.3 } }}
-                onClick={() => setIsOpen(false)}
-                className="absolute inset-0 bg-[#1C1B19]/90 backdrop-blur-md cursor-pointer"
-              />
-
-              {/* Book Container */}
-              <motion.div
-                layoutId={`book-container-${product.id}`}
-                transition={{ layout: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-                // Fully responsive container: snaps to bottom on mobile, centers on desktop
-                className="relative w-full md:w-[85vw] lg:w-[75vw] max-w-6xl h-[90vh] md:h-[85vh] bg-[#FDFBF7] rounded-t-3xl md:rounded-sm z-[210] flex flex-col md:flex-row overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)]"
-              >
-                
-                {/* Left Page (Image Cover) */}
-                <div className="w-full h-[40vh] md:h-full md:w-1/2 relative perspective-[2000px] shrink-0 border-b md:border-b-0 md:border-r border-[#C2B28F]/30 bg-[#F5F2EB]">
-                  
-                  {/* The "Page Turn" Animation - Desktop Only */}
-                  <motion.div 
-                    initial={{ rotateY: 0 }} animate={{ rotateY: -180 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ transformOrigin: "left" }}
-                    className="absolute inset-0 bg-[#1C1B19] z-20 shadow-2xl hidden md:block"
-                  />
-                  
-                  <div className="absolute inset-0">
-                    <Image src={product.image} alt={product.title} fill className="object-cover" priority />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1C1B19]/40 via-transparent to-transparent md:bg-black/10" />
-                  </div>
-                </div>
-
-                {/* Right Page (Content) */}
-                <motion.div 
-                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.6 }}
-                  className="w-full flex-1 md:h-full md:w-1/2 p-6 md:p-12 lg:p-16 flex flex-col justify-start md:justify-center bg-[#FDFBF7] overflow-y-auto hide-scrollbar relative"
-                >
-                  <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 md:top-8 md:right-8 text-[10px] uppercase tracking-[0.3em] font-bold text-[#1C1B19]/40 hover:text-[#1C1B19] transition-colors flex items-center gap-2 bg-white/50 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-2 md:p-0 rounded-full md:rounded-none z-50">
-                     <span className="hidden md:inline">Close</span> 
-                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" /></svg>
-                  </button>
-                  
-                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] font-bold text-[#7A3E3E] mb-3 md:mb-4 mt-2 md:mt-0 block">
-                     Collection Vol. 1
-                  </span>
-                  
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif leading-[1.05] text-[#1C1B19] tracking-tight">{product.title}</h2>
-                  
-                  <p className="mt-4 md:mt-6 text-[#1C1B19]/70 text-sm md:text-base leading-relaxed max-w-md font-sans">
-                     Discover the pinnacle of Indian artisanal luxury. The {product.title} is meticulously hand-crafted to offer a sensory experience that transcends traditional boundaries, weaving heritage into modern fluidity.
-                  </p>
-                  
-                  <div className="mt-8 md:mt-auto pt-6 md:pt-8 border-t border-[#C2B28F]/20">
-                    <span className="text-2xl md:text-3xl font-mono text-[#1C1B19]">{productPrice}</span>
-                    
-                    <div className="mt-6 flex flex-col sm:flex-row gap-3 md:gap-4">
-                      <button 
-                        onClick={() => {
-                          addToCart({ id: `book-${product.id}`, title: product.title, price: productPrice, image: product.image });
-                          setIsOpen(false);
-                        }}
-                        className="flex-1 py-4 md:py-5 bg-[#1C1B19] text-[#FDFBF7] text-[10px] font-bold uppercase tracking-[0.3em] rounded-sm hover:bg-[#7A3E3E] transition-colors shadow-lg"
-                      >
-                          Secure This Piece
-                      </button>
-                      <button className="px-6 md:px-8 py-4 md:py-5 border border-[#1C1B19]/20 text-[#1C1B19] text-[10px] font-bold uppercase tracking-[0.3em] rounded-sm hover:bg-[#1C1B19]/5 transition-colors">
-                          Details
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-
-              </motion.div>
-            </div>
+            <Modal product={product} setIsOpen={setIsOpen} productPrice={productPrice} addToCart={addToCart}/>
           )}
         </AnimatePresence>,
         document.body

@@ -136,7 +136,7 @@ const Hero = ({ heroImage }: HeroProps) => {
             </div>
 
             {/* Masked Headline Reveal */}
-            <h1 className="text-5xl sm:text-6xl xl:text-[5rem] font-serif font-medium text-[#1C1B19] leading-[1.05] mb-8 tracking-tight">
+            <h1 className="text-5xl sm:text-6xl xl:text-[5rem] font-serif font-medium text-[#1C1B19] leading-[1.05] mb-8 mt-6 tracking-tight">
               <div className="hero-text-mask overflow-hidden pb-2">
                 <span className="block">The Art Of</span>
               </div>

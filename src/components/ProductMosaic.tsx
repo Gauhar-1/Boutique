@@ -1,5 +1,5 @@
 'use client';
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring, useScroll } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring, useScroll, useAnimationFrame } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useStore } from '@/context/StoreContext';
@@ -91,7 +91,7 @@ function Cubie({ x, y, z, size, gap, images, onOpenModal }: { x: number; y: numb
           }}
         >
           {f.img && (
-            <div className="relative w-full h-full opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-500 group">
+            <div className="relative w-full h-full opacity-80 hover:opacity-100 transition-opacity grayscale-0 hover:grayscale-0 duration-500 group">
                <Image src={f.img} alt="Product" fill className="object-cover" sizes="150px" />
                <div className="absolute inset-x-0 bottom-0 bg-white/20 backdrop-blur-md h-0 group-hover:h-8 transition-all duration-300 flex items-center justify-center">
                   <span className="text-[8px] font-black tracking-widest text-black">+ VIEW</span>
@@ -141,6 +141,20 @@ export default function ProductMosaicCube() {
     return () => { document.body.style.overflow = 'unset'; };
   }, [selectedItem]);
 
+  // // 1. Setup Motion Values for Rotation
+  // const rotateAUTOX = useMotionValue(15);
+  // const rotateAUTOY = useMotionValue(-25);
+  // const isDragging = useRef(false);
+
+  // // 2. Auto-Rotation Engine (Runs on every frame)
+  // useAnimationFrame((t, delta) => {
+  //   // Only auto-rotate if the user is NOT dragging the cube and the modal is NOT open
+  //   if (!isDragging.current && !selectedItem) {
+  //     rotateY.set(rotateAUTOY.get() + delta * 0.015); // Horizontal spin
+  //     rotateX.set(rotateAUTOX.get() + delta * 0.005); // Very slow vertical drift
+  //   }
+  // });
+
   return (
     <>
       <motion.section
@@ -153,7 +167,7 @@ export default function ProductMosaicCube() {
         <div className="absolute top-6 left-1/2 -translate-x-1/2 text-center z-20 pointer-events-none">
           <span className="text-[10px] uppercase tracking-[0.6em] text-[#C2B28F] font-bold mb-4 block">Snigdha Gallery</span>
           <h2 className="text-5xl font-serif text-[#FDFBF7] tracking-tighter">Tactile Archive</h2>
-          <p className="mt-4 text-[#FDFBF7]/40 text-[10px] uppercase tracking-widest">Slide to rotate | Click face to explore</p>
+          <p className="mt-4 text-[#FDFBF7]/40 text-[10px] uppercase tracking-widest">  Click Outside the cude to Rotate | Click face to explore</p>
         </div>
 
         <motion.div

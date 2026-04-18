@@ -31,7 +31,7 @@ export default function MosaicCategoryTransition() {
           </div>
 
           {/* Panel 2: Full Collection Grid */}
-          <div className="w-screen h-screen">
+          <div className="w-screen h-screen overflow-y-auto">
              <CategoryShowcase />
           </div>
         </motion.div>
